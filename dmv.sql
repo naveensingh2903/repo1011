@@ -46,3 +46,4 @@ on s.session_id=r.session_id where r.status='running' and r.resource_class is no
 group by login_name
 order by 3 desc
 -----------------------------------------------------------------------------------------------------------------
+--Added new line first change 1
