@@ -47,3 +47,38 @@ group by login_name
 order by 3 desc
 -----------------------------------------------------------------------------------------------------------------
 --Added new line first change 1
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+--Queries running from which login 
+select datediff(mi,start_time,getdate()),login_name,r.* from sys.dm_pdw_exec_sessions s join sys.dm_pdw_exec_requests r
+on s.session_id=r.session_id where r.status='running' and r.resource_class is not null
+order by total_elapsed_time desc
+-----------------------------------------------------------------------------------------------------------------
+--DMV TO SEE ALL THE QUERIES WHICH ARE EXECUTED FROM SAME SESSION_ID
+select * from sys.dm_pdw_exec_requests
+where request_id='QID391464231'
+-----------------------------------------------------------------------------------------------------------------
+select * from sys.dm_pdw_exec_requests
+where session_id='SID21465957'
+-----------------------------------------------------------------------------------------------------------------
+--DMV TO SEE BREAKDOWN OF THE QUERY
+select * from sys.dm_pdw_request_steps
+where request_id='QID276412486'
+-----------------------------------------------------------------------------------------------------------------
+select * from sys.dm_pdw_sql_requests
+where request_id = 'QID275951902'
+and  step_index = '19'
+-----------------------------------------------------------------------------------------------------------------
+select pdw_node_id,count(*) from sys.dm_pdw_sql_requests
+where status ='running' 
+group by pdw_node_id 
+order by 2 desc
+-----------------------------------------------------------------------------------------------------------------
+select distribution_id,count(*) from sys.dm_pdw_sql_requests
+where status='running'
+group by distribution_id
+order by 2 desc
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
