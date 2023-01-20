@@ -18,6 +18,11 @@ CREATE UNIQUE CLUSTERED INDEX clustered_index_name ON table_name(column_name_1,c
 SELECT * FROM index_name WITH (NOEXPAND) 
 WHERE column_name_1 >12
 --------------------------------------------------------------------------
+with cte ABC 
+as 
+(
+    select * from abc where abd = 'zxc'
+)
 
 
 
