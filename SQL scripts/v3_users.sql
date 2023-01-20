@@ -40,3 +40,6 @@ EXEC sp_addrolemember 'largerc', 'largerc_user';
 
 
 
+V5 users 
+select * from sys.dm_exec_requests 
+select * from sys.dm_exec_sessions
